@@ -1,0 +1,495 @@
+/* 1. DEFAULT LAYOUT STYLES
+   2.INTRO TEXT
+   3. HEADER
+   4. SPRITES
+   5. POP-UPS
+   6. WEB DEVELOPMENT POP-UP
+   7. GRAPHIC DESIGN POP-UP
+   8. BAKING POPUP
+   9. FOOTER
+   10. MEDIA STYLES
+
+*/
+
+/* 1. DEFAULT LAYOUT STYLES*/
+html{
+  box-sizing: border-box;
+  font-size:20px;
+  font-family: 'Open sans',Arial, sans-serif;
+}
+*, *::before, *::after {
+  box-sizing:inherit;
+}
+
+body{
+  margin:0;
+  background-image: url(images/light_grey.png);
+}
+.hidden{
+  position: absolute;
+  left:-10000px;
+}
+
+.flex-container {
+
+  flex-flow:row wrap;
+  display:-webkit-box;
+  display:-moz-box;
+  display:-ms-flexbox;
+  display:-webkit-flex;
+  display:flex;
+  justify-content:space-evenly;
+
+}
+#wrapper{
+
+}
+h2{
+  font-size:3em;
+
+}
+h3{
+  font-size:2em;
+  margin:0;
+  padding-bottom: 0.5rem;
+}
+
+h2,h3{
+  font-family:'Amatic SC', helvetica, sans-serif;
+  text-align: center;
+  color:#e24e42;
+
+}
+
+
+
+
+
+/*2.INTRO TEXT */
+#opening-text{
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:30px;
+
+}
+
+/* Used this youtube tutorial to learn how to animate the SVG https://www.youtube.com/watch?v=y0Ic8QcvyK8 */
+
+
+path{
+  stroke:#e24e42;
+  fill:#e24e42;
+  stroke-dasharray:850;
+  object-position: 10;
+  transition: all 1s ease-out;
+  animation:filltext 3s cubic-bezier(1,0.23,1,0.65);
+}
+#arrow:hover{
+  stroke:#e9b000;
+  fill:#e9b000;
+  cursor:pointer;
+  animation: wiggle 0.5s 5;
+}
+
+@keyframes filltext {
+  0%{
+    opacity: 0;
+    fill: none;
+    stroke-dashoffset: 850;
+  }
+
+  30%{
+    opacity: 0.75;
+    fill: none;
+    stroke-dashoffset: 850;
+  }
+
+
+
+  90%{
+    opacity: 0.95;
+    fill: #e24e42;
+  }
+
+  100%{
+    opacity: 10;
+    fill:#e24e42;
+    stroke-dashoffset:0;
+  }
+}
+
+/* 3. HEADER */
+
+
+#main-menu{
+  flex:1 0 0;
+
+}
+#logo{
+  display:block;
+  width:300px;
+  height:auto;
+  padding-top:20px;
+  padding-left: 30px;
+
+}
+
+#logo-container{
+  flex:1 0 0;
+  padding-bottom:1em;
+
+
+}
+
+ul{
+  margin-top: 50px;
+  text-align: right;
+}
+li{
+  display:inline;
+  margin-right:1.3em;
+  text-decoration:none;
+  font-size:1.2em;
+
+
+}
+
+li a{
+  text-decoration: none;
+  font-weight: bold;
+  /*background-color:#e24e42;*/
+  color:#e24e42;
+  margin:5px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+li a:hover{
+  color:#e9b000;
+  border-bottom: 5px solid #e24e42;
+  /*background-color:#e9b000;*/
+  margin:5px;
+
+}
+/*4. SPRITES*/
+
+#sprite-container{
+  padding-bottom:100px;
+  margin-left: 50px;
+  margin-right:50px;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 5px 17px 39px -8px rgba(84,84,84,1);
+}
+p{
+
+  margin:0 10%;
+  display:block;
+  text-align: center;
+  flex:100%;
+  padding-top:70px;
+}
+
+
+h2{
+  flex:100%;
+}
+
+div[class*="sprite"] {
+  display:inline-block;
+  max-width: 240px;
+  height: 240px;
+  text-align: center;
+  flex:1 0 0;
+}
+div[class*="sprite"]:hover{
+  animation: play 1.5s steps(10) infinite;
+
+
+}
+
+button{
+  font-family:'Amatic SC', helvetica, sans-serif;
+  font-size:1.75em;
+  position: relative;
+  top:220px;
+  padding:0.2em;
+  margin:0;
+  color:white;
+  background-color: #e24e42;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+button:hover{
+  background-color:#e9b000;
+  color:white ;
+  animation:wiggle 0.5s 5;
+
+}
+
+@keyframes wiggle{
+  0%{transform:translate(1px);}
+  25%{ transform: translate(0px);}
+  50%{transform: translate(-1px);}
+  75%{transform: translate(0px);}
+  100%{transform: translate(1px);}
+}
+
+
+
+.sprite1{
+  background: url('images/webdevsprite.png') left center;
+
+
+
+}
+
+@keyframes play {
+   100% { background-position: -2400px; }
+}
+
+.sprite2{
+  background: url('images/designsprite.png') left center;
+
+
+}
+
+
+@keyframes play {
+   100% { background-position: -2400px; }
+}
+.sprite3{
+  background: url('images/bakingsprite.png') left center;
+
+
+}
+@keyframes play {
+   100% { background-position: -2400px; }
+}
+
+/*5. POP-UPS*/
+/* Based this code off of https://sabe.io/tutorials/how-to-create-modal-popup-box */
+.s-background{
+  opacity:0.3;
+}
+
+[id^="closebtn"]{
+  float: right;
+  margin:0.5rem;
+  width: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: lightgray;
+
+}
+
+.show-popup {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.0);
+  transition: visibility 1s linear 0s, opacity 0.25s 0s, transform 0.25s;
+  z-index:1000;
+
+  }
+
+[id$="popup"]{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border:#e24e42 solid 2px;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 1rem 1.5rem;
+  width: 24rem;
+  border-radius: 0.5rem;
+  z-index:1000;
+  font-family:'Open Sans', arial, sans-serif;
+  }
+
+  /* 6. WEB DEVELOPMENT POP-UP*/
+  /*Type animation tutorial taken from https://css-tricks.com/snippets/css/typewriter-effect/ */
+
+  .typewriter h4{
+    width:100%;
+    color:#e9b000;
+    text-align: center;
+    font-family: "Courier New", Courier, monospace;
+    font-size:1.5em;
+    font-weight: bold;
+    overflow:hidden;
+    border-right: 0.15em solid #e9b000;
+    white-space:nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.15em;
+    animation: typing 3.5s steps(40),
+    blinking 0.75s step-end infinite;
+  }
+
+  #webdevpopup p{
+    padding-top:20px;
+    margin:0 10px;
+  }
+
+  @keyframes typing {
+    from {width:0}
+    to {width:100%}
+  }
+  @keyframes blinking{
+    from, to {border-color:transparent}
+    50%{border-color:#e9b000;}
+  }
+
+  /*7. GRAPHIC DESIGN POP-UP*/
+  .design{
+    width:100px;
+    height: auto;
+    margin:20px 10px;
+    flex:1 0 0;
+    border:1px solid #86888a;
+    transition: all 1s ease-in-out;
+  }
+  .design:hover{
+      transform: scale(4.5);
+
+  }
+
+  #gdimages{
+    width: 100%;
+    align-items: center;
+    margin:0 auto;
+  }
+
+  /* 8. BAKING POPUP */
+
+  #cookies{
+    margin:0 auto;
+  }
+
+  .cookie{
+    width:125px;
+    height:auto;
+    padding:1rem;
+
+  }
+  #cookies:hover .cookie{
+
+    animation: spinning 2s  infinite linear;
+
+  }
+/*Learned how to code an infinite spin from https://codepen.io/teerapuch/pen/vLJXeR */
+@keyframes spinning {
+  from {
+       transform:rotate(0deg);
+   }
+   to {
+       transform:rotate(360deg);
+   }
+
+}
+
+#bakingpopup a {
+    font-family:'Amatic SC', helvetica, sans-serif;
+    font-size:1.5rem;
+    padding:0.2rem;
+    display: block;
+    width:50%;
+    margin:0 auto;
+    color:white;
+    background-color: #e24e42;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration:none;
+    transition: all 0.3s;
+}
+#bakingpopup a:hover{
+  background-color:#e9b000;
+  color:white ;
+
+
+}
+
+
+/*9. FOOTER*/
+#footer{
+  background-color: #e24e42;
+  color:white;
+  flex:100%;
+  position: relative;
+  top:100px;
+
+}
+
+#footer p{
+  padding:30px 0;
+}
+
+/*10. MEDIA STYLES */
+@media screen and (max-width:800px){
+  html{
+    font-size:12px;
+  }
+
+
+
+  #sprite-container{
+    margin-bottom:0;
+
+  }
+
+  .design{
+    width:100px;
+    height: auto;
+    margin:20px 10px;
+    flex:100%;
+    border:1px solid #86888a;
+    transition: all 1s ease-in-out;
+  }
+  .design:hover{
+      transform: scale(2.5);
+
+  }
+  .cookie{
+    width:75px;
+    height:auto;
+    padding:1rem;
+
+  }
+
+  #logo{
+    width:200px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  #logo-container{
+    flex:100%;
+  }
+  div[class*="sprite"] {
+
+    flex:100%;
+    display:block;
+    margin-bottom:50px;
+  }
+
+  #main-menu{
+    flex:100%;
+
+  }
+  ul{
+    text-align: center;
+  }
+
+  #main-text{
+    padding-top:10px;
+  }
+
+}
+
+@media screen and (max-width:700px){
+
+
+
+}
